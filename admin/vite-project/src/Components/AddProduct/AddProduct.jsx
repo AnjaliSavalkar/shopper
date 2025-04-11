@@ -364,7 +364,7 @@ const AddProduct = () => {
       formdata.append("image", image);
 
       // Upload image
-      const uploadResp = await fetch("http://localhost:4000/upload", {
+      const uploadResp = await fetch("https://ecommerce-full-backend.onrender.com/upload", {
         method: "POST",
         body: formdata,
       });
@@ -383,7 +383,7 @@ const AddProduct = () => {
       };
 
       // Send product to backend
-      const productResp = await fetch("http://localhost:4000/addproduct", {
+      const productResp = await fetch("https://ecommerce-full-backend.onrender.com/addproduct", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
