@@ -41,7 +41,7 @@ const Popular = () => {
   const [popularProducts, setpopular_products] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:4000/popularinwomen")
+    fetch("https://ecommerce-full-backend.onrender.com/popularinwomen")
       .then((response) => response.json())
       .then((data) => setpopular_products(data)) // ✅ pass data here
       .catch((err) => console.error("Fetch error:", err)); // ✅ optional error logging
