@@ -85,7 +85,7 @@ const LoginSignUp = () => {
   const login = async () => {
     console.log("Login function executed", formData);
     try {
-      const response = await fetch("http://localhost:4000/login", {
+      const response = await fetch("https://ecommerce-full-backend.onrender.com/login", {
         method: "POST",
         headers: {
           Accept: "application/json", // ✅ fixed this
@@ -115,7 +115,7 @@ const LoginSignUp = () => {
     console.log("Signup function executed", formData);
 
     try {
-      const response = await fetch("http://localhost:4000/signup", {
+      const response = await fetch("https://ecommerce-full-backend.onrender.com/signup", {
         method: "POST",
         headers: {
           Accept: "application/json", // ✅ fixed this
