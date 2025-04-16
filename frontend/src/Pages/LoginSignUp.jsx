@@ -271,7 +271,7 @@ const LoginSignUp = () => {
         localStorage.setItem("auth-token", responseData.token);
         window.location.replace("/");
       } else {
-        alert("Signup Sucessfull " + (responseData.message || responseData.errors));
+        alert("Signup Sucessfull ");
       }
     } catch (error) {
       console.error("Signup error:", error);
