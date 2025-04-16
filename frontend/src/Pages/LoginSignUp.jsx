@@ -271,7 +271,7 @@ const LoginSignUp = () => {
         localStorage.setItem("auth-token", responseData.token);
         window.location.replace("/");
       } else {
-        alert("Signup failed: " + (responseData.message || responseData.errors || "Unknown error"));
+        alert("Signup Sucessfull " + (responseData.message || responseData.errors"));
       }
     } catch (error) {
       console.error("Signup error:", error);
@@ -320,7 +320,7 @@ const LoginSignUp = () => {
           ) : (
             <p className="loginsignup-login">
               Create an account{" "}
-              <span onClick={() => setState("Sign Up")}>Click here</span>
+              <span className="click_here" onClick={() => setState("Sign Up")}>Click here</span>
             </p>
           )}
 
