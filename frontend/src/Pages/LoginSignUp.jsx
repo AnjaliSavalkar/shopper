@@ -315,7 +315,7 @@ const LoginSignUp = () => {
           {state === "Sign Up" ? (
             <p className="loginsignup-login">
               Already have an account?{" "}
-              <span onClick={() => setState("Login")}>Login here</span>
+              <span className="click_here" onClick={() => setState("Login")}>Login here</span>
             </p>
           ) : (
             <p className="loginsignup-login">
