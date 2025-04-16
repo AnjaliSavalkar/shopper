@@ -2,27 +2,36 @@
   height: 100vh;
   background: linear-gradient(180deg, #fde1ff, #e1ffea22 60%);
   display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 100px;
+  gap: 50px;
+  box-sizing: border-box;
 }
+
 .hero-left {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 20px;
-  padding-left: 180px;
+  padding-left: 80px;
   line-height: 1.1;
 }
+
 .hero-left h2 {
   color: #090909;
   font-size: 26px;
   font-weight: 600;
 }
+
 .hero-left p {
   color: #171717;
   font-size: 100px;
   font-weight: 700;
-  margin: 30px 0; /* Adds space above & below the text */
-  line-height: 1.1; /* Keeps text height tight but readable */
+  margin: 30px 0;
+  line-height: 1.1;
 }
 
 .hero-hand-icon {
@@ -30,9 +39,11 @@
   align-items: center;
   gap: 20px;
 }
+
 .hero-hand-icon img {
   width: 105px;
 }
+
 .hero-latest-btn {
   display: flex;
   justify-content: center;
@@ -46,6 +57,8 @@
   color: white;
   font-size: 22px;
   font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .hero-right {
@@ -53,4 +66,70 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* ------------------ Media Queries ------------------ */
+
+@media (max-width: 1024px) {
+  .hero {
+    flex-direction: column;
+    padding: 60px 40px;
+    text-align: center;
+    height: auto;
+  }
+
+  .hero-left {
+    padding-left: 0;
+    align-items: center;
+  }
+
+  .hero-left p {
+    font-size: 70px;
+  }
+
+  .hero-latest-btn {
+    width: 250px;
+    height: 60px;
+    font-size: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-left p {
+    font-size: 50px;
+  }
+
+  .hero-left h2 {
+    font-size: 22px;
+  }
+
+  .hero-hand-icon img {
+    width: 80px;
+  }
+
+  .hero-latest-btn {
+    width: 220px;
+    height: 55px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-left p {
+    font-size: 36px;
+  }
+
+  .hero-latest-btn {
+    width: 200px;
+    height: 50px;
+    font-size: 16px;
+  }
+
+  .hero-hand-icon {
+    gap: 10px;
+  }
+
+  .hero-hand-icon img {
+    width: 60px;
+  }
 }
