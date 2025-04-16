@@ -67,6 +67,142 @@
 
 // export default LoginSignUp;
 
+// import React, { useState } from "react";
+// import "./CSS/LoginSignUp.css";
+
+// const LoginSignUp = () => {
+//   const [state, setState] = useState("Login");
+//   const [formData, setFormData] = useState({
+//     username: "",
+//     password: "",
+//     email: "",
+//   });
+
+//   const changeHandler = (e) => {
+//     setFormData({ ...formData, [e.target.name]: e.target.value });
+//   };
+
+//   const login = async () => {
+//     console.log("Login function executed", formData);
+//     try {
+//       const response = await fetch("https://ecommerce-full-backend.onrender.com/login", {
+//         method: "POST",
+//         headers: {
+//           Accept: "application/json", // ✅ fixed this
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(formData),
+//       });
+
+//       const responseData = await response.json();
+//       console.log("Signup response:", responseData);
+
+//       if (responseData.success) {
+//         localStorage.setItem("auth-token", responseData.token);
+//         window.location.replace("/");
+
+//         // maybe redirect or reset form
+//       } else {
+//         alert("Signup failed: " + responseData.errors);
+//       }
+//     } catch (error) {
+//       console.error("Signup error:", error);
+//       alert("Signup error. Please try again.");
+//     }
+//   };
+
+//   const signup = async () => {
+//     console.log("Signup function executed", formData);
+
+//     try {
+//       const response = await fetch("https://ecommerce-full-backend.onrender.com/signup", {
+//         method: "POST",
+//         headers: {
+//           Accept: "application/json", // ✅ fixed this
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify(formData),
+//       });
+
+//       const responseData = await response.json();
+//       console.log("Signup response:", responseData);
+
+//       if (responseData.success) {
+//         localStorage.setItem("auth-token", responseData.token);
+//         window.location.replace("/");
+
+//         // maybe redirect or reset form
+//       } else {
+//         alert("Signup failed: " + responseData.errors);
+//       }
+//     } catch (error) {
+//       console.error("Signup error:", error);
+//       alert("Signup error. Please try again.");
+//     }
+//   };
+
+//   return (
+//     <div className="loginsignup">
+//       <div className="loginsighup-container">
+//         <h1>{state}</h1>
+//         <div className="loginsignup-fileds">
+//           {state === "Sign Up" && (
+//             <input
+//               name="username"
+//               type="text"
+//               placeholder="Your name"
+//               value={formData.username}
+//               onChange={changeHandler}
+//             />
+//           )}
+//           <input
+//             name="email"
+//             type="email"
+//             placeholder="Email address"
+//             value={formData.email}
+//             onChange={changeHandler}
+//           />
+//           <input
+//             name="password"
+//             type="password"
+//             placeholder="Your password"
+//             value={formData.password}
+//             onChange={changeHandler}
+//           />
+
+//           <button onClick={() => (state === "Login" ? login() : signup())}>
+//             Continue
+//           </button>
+
+//           {state === "Sign Up" ? (
+//             <p className="loginsignup-login">
+//               Already have an account?{" "}
+//               <span onClick={() => setState("Login")}>Login here</span>
+//             </p>
+//           ) : (
+//             <p className="loginsignup-login">
+//               Create an account{" "}
+//               <span onClick={() => setState("Sign Up")}>Click here</span>
+//             </p>
+//           )}
+
+//           <div className="loginsignup-agree">
+//             <input type="checkbox" />
+//             <p>
+//               By continuing, I agree to the Terms of Use and Privacy Policy.
+//             </p>
+//           </div>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default LoginSignUp;
+
+
+
+
 import React, { useState } from "react";
 import "./CSS/LoginSignUp.css";
 
@@ -74,8 +210,8 @@ const LoginSignUp = () => {
   const [state, setState] = useState("Login");
   const [formData, setFormData] = useState({
     username: "",
-    password: "",
     email: "",
+    password: "",
   });
 
   const changeHandler = (e) => {
@@ -83,57 +219,59 @@ const LoginSignUp = () => {
   };
 
   const login = async () => {
-    console.log("Login function executed", formData);
+    console.log("Login data:", formData);
     try {
       const response = await fetch("https://ecommerce-full-backend.onrender.com/login", {
         method: "POST",
         headers: {
-          Accept: "application/json", // ✅ fixed this
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          email: formData.email,
+          password: formData.password,
+        }),
       });
 
       const responseData = await response.json();
-      console.log("Signup response:", responseData);
+      console.log("Login response:", responseData);
 
-      if (responseData.success) {
+      if (response.ok && responseData.success) {
         localStorage.setItem("auth-token", responseData.token);
         window.location.replace("/");
-
-        // maybe redirect or reset form
       } else {
-        alert("Signup failed: " + responseData.errors);
+        alert("Login failed: " + (responseData.message || responseData.errors || "Unknown error"));
       }
     } catch (error) {
-      console.error("Signup error:", error);
-      alert("Signup error. Please try again.");
+      console.error("Login error:", error);
+      alert("Login error. Please try again.");
     }
   };
 
   const signup = async () => {
-    console.log("Signup function executed", formData);
-
+    console.log("Signup data:", formData);
     try {
       const response = await fetch("https://ecommerce-full-backend.onrender.com/signup", {
         method: "POST",
         headers: {
-          Accept: "application/json", // ✅ fixed this
+          Accept: "application/json",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          username: formData.username,
+          email: formData.email,
+          password: formData.password,
+        }),
       });
 
       const responseData = await response.json();
       console.log("Signup response:", responseData);
 
-      if (responseData.success) {
+      if (response.ok && responseData.success) {
         localStorage.setItem("auth-token", responseData.token);
         window.location.replace("/");
-
-        // maybe redirect or reset form
       } else {
-        alert("Signup failed: " + responseData.errors);
+        alert("Signup failed: " + (responseData.message || responseData.errors || "Unknown error"));
       }
     } catch (error) {
       console.error("Signup error:", error);
