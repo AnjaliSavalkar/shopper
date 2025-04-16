@@ -51,6 +51,9 @@
   color: #ff4141;
   font-weight: 600;
 }
+.click_here{
+  cursor:pointer;
+}
 .loginsignup-agree {
   display: flex;
   align-items: center;
