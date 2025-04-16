@@ -5,7 +5,7 @@
 //   const [state, setState] = useState("Login");
 //   const [formData,setFormData]=useState({
 //     username:"",
-//     password:"",
+//     password:""
 //     email:""
 //   })
 //   const changeHandler=(e)=>
